@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(7, 22, 48, 0.95), rgba(30, 64, 175, 0.9)), url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: white;
+      padding: 110px 20px 80px;
+      position: relative;
+    }
+    .hero h1 {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border: 0;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .section-title {
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 12px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    .property-card {
+      border: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.08);
+      transition: transform 0.25s ease;
+    }
+    .property-card:hover {
+      transform: translateY(-6px);
+    }
+    .property-card img {
+      height: 220px;
+      object-fit: cover;
+    }
+    .price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #16a34a;
+    }
+    .loc-badge {
+      background: #0f172a;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .btn-hub {
+      background: #1d4ed8;
+      color: white;
+      border: 0;
+      border-radius: 12px;
+    }
+    .btn-hub:hover {
+      background: #163fa5;
+      color: white;
+    }
+    .metric {
+      text-align: center;
+      padding: 18px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .metric strong {
+      display: block;
+      font-size: 1.6rem;
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Property Hub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
+        <li class="nav-item"><a class="nav-link" href="#areas">Areas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <span class="pill">Hyderabad Real Estate</span>
+        <span class="pill">Verified Listings</span>
+        <h1 class="display-5 mt-3">Discover homes across Hyderabad’s fastest-growing localities</h1>
+        <p class="lead mt-3">From Gachibowli and Kokapet to Miyapur and Uppal, explore flats, villas, plots, and premium investments in one place.</p>
+      </div>
+      <div class="col-lg-5">
+        <div class="glass-card p-4">
+          <label class="form-label fw-semibold">Search locality</label>
+          <input id="searchInput" type="text" class="form-control mb-3" placeholder="Gachibowli, Kondapur, Kokapet...">
+          <label class="form-label fw-semibold">Budget</label>
+          <select id="budgetFilter" class="form-select mb-3" onchange="filterHomes()">
+            <option value="all">All Budgets</option>
+            <option value="0-5000000">Below ₹50 Lakh</option>
+            <option value="5000000-10000000">₹50 Lakh - ₹1 Crore</option>
+            <option value="10000000-25000000">₹1 Crore - ₹2.5 Crore</option>
+            <option value="25000000-999999999">₹2.5 Crore+</option>
+          </select>
+          <button class="btn btn-hub w-100" onclick="filterHomes()">Explore Properties</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="container py-5">
+  <div class="row g-3">
+    <div class="col-md-4"><div class="metric"><strong>120+</strong>Verified Properties</div></div>
+    <div class="col-md-4"><div class="metric"><strong>18</strong>Top Localities</div></div>
+    <div class="col-md-4"><div class="metric"><strong>4</strong>Property Types</div></div>
+  </div>
+</section>
+
+<section class="container pb-4" id="featured">
+  <h2 class="section-title">Featured Properties</h2>
+  <div class="row g-4" id="propertyGrid">
+
+    <div class="col-md-6 col-lg-4 home-item" data-city="gachibowli" data-type="apartment" data-price="9200000">
+      <div class="card property-card">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Apartment">
+        <div class="card-body">
+          <span class="loc-badge">Gachibowli</span>
+          <h5>3 BHK Premium Apartment</h5>
+          <p class="text-muted mb-2">Near IT hubs, clubhouse, gym, and sky lounge.</p>
+          <p class="price">₹92,00,000</p>
+          <div><span class="pill">3 BHK</span><span class="pill">Apartment</span><span class="pill">Ready to move</span></div>
+          <button class="btn btn-hub w-100 mt-3">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 home-item" data-city="kokapet" data-type="villa" data-price="32000000">
+      <div class="card property-card">
+        <img src="https://images.unsplash.com/photo-1576941089067-2de3c901e126?auto=format&fit=crop&w=1200&q=80" alt="Villa">
+        <div class="card-body">
+          <span class="loc-badge">Kokapet</span>
+          <h5>Luxury Villa Community</h5>
+          <p class="text-muted mb-2">Gated villa project with private garden and terrace deck.</p>
+          <p class="price">₹3.2 Crore</p>
+          <div><span class="pill">4 BHK</span><span class="pill">Villa</span><span class="pill">Luxury</span></div>
+          <button class="btn btn-hub w-100 mt-3">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 home-item" data-city="miyapur" data-type="apartment" data-price="6200000">
+      <div class="card property-card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Apartment">
+        <div class="card-body">
+          <span class="loc-badge">Miyapur</span>
+          <h5>Affordable Family Flat</h5>
+          <p class="text-muted mb-2">Smart layout with schools, metro, and hospitals nearby.</p>
+          <p class="price">₹62,00,000</p>
+          <div><span class="pill">2 BHK</span><span class="pill">Apartment</span><span class="pill">Value</span></div>
+          <button class="btn btn-hub w-100 mt-3">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 home-item" data-city="uppal" data-type="plot" data-price="3800000">
+      <div class="card property-card">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Plot">
+        <div class="card-body">
+          <span class="loc-badge">Uppal</span>
+          <h5>Open Plot for Investment</h5>
+          <p class="text-muted mb-2">Ideal for future appreciation with emerging infrastructure.</p>
+          <p class="price">₹38,00,000</p>
+          <div><span class="pill">Plot</span><span class="pill">Investment</span><span class="pill">Affordable</span></div>
+          <button class="btn btn-hub w-100 mt-3">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 home-item" data-city="kondapur" data-type="apartment" data-price="14500000">
+      <div class="card property-card">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80" alt="Apartment">
+        <div class="card-body">
+          <span class="loc-badge">Kondapur</span>
+          <h5>High-Rise 3BHK Apartment</h5>
+          <p class="text-muted mb-2">Panoramic city views with pool, gym, and community spaces.</p>
+          <p class="price">₹1.45 Crore</p>
+          <div><span class="pill">3 BHK</span><span class="pill">High-rise</span><span class="pill">Premium</span></div>
+          <button class="btn btn-hub w-100 mt-3">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 home-item" data-city="jublieehills" data-type="villa" data-price="58000000">
+      <div class="card property-card">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Villa">
+        <div class="card-body">
+          <span class="loc-badge">Jubilee Hills</span>
+          <h5>Ultra-Luxury Residence</h5>
+          <p class="text-muted mb-2">Exclusive premium home in one of Hyderabad’s most prestigious areas.</p>
+          <p class="price">₹5.8 Crore</p>
+          <div><span class="pill">5 BHK</span><span class="pill">Villa</span><span class="pill">Luxury</span></div>
+          <button class="btn btn-hub w-100 mt-3">View Details</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="container py-5" id="areas">
+  <h2 class="section-title">Popular Hyderabad Areas</h2>
+  <div class="row g-4">
+    <div class="col-lg-3 col-md-6"><div class="card glass-card p-4 h-100"><h5>West Hyderabad</h5><p>Gachibowli, Kondapur, Kokapet, Tellapur.</p></div></div>
+    <div class="col-lg-3 col-md-6"><div class="card glass-card p-4 h-100"><h5>East Hyderabad</h5><p>Uppal, LB Nagar, Nagole, Pocharam.</p></div></div>
+    <div class="col-lg-3 col-md-6"><div class="card glass-card p-4 h-100"><h5>North Hyderabad</h5><p>Kompally, Shamirpet, Medchal, Yapral.</p></div></div>
+    <div class="col-lg-3 col-md-6"><div class="card glass-card p-4 h-100"><h5>Central Premium</h5><p>Jubilee Hills, Banjara Hills, Somajiguda.</p></div></div>
+  </div>
+</section>
+
+<section class="container pb-5" id="contact">
+  <div class="card glass-card p-4">
+    <h2 class="section-title">Book a Consultation</h2>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <iframe
+          src="https://www.google.com/maps?q=Hyderabad,+India&output=embed"
+          width="100%"
+          height="330"
+          style="border:0; border-radius:16px;"
+          allowfullscreen=""
+          loading="lazy"></iframe>
+      </div>
+      <div class="col-lg-6">
+        <form>
+          <input type="text" class="form-control mb-3" placeholder="Your Name">
+          <input type="email" class="form-control mb-3" placeholder="Your Email">
+          <select class="form-select mb-3">
+            <option selected>Property Type</option>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>Plot</option>
+            <option>Commercial</option>
+          </select>
+          <textarea class="form-control mb-3" rows="5" placeholder="Tell us what you're looking for in Hyderabad"></textarea>
+          <button class="btn btn-hub px-4">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function filterHomes() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const budget = document.getElementById('budgetFilter').value;
+    const items = document.querySelectorAll('.home-item');
+
+    items.forEach(item => {
+      const city = item.dataset.city.toLowerCase();
+      const price = parseInt(item.dataset.price, 10);
+      let budgetMatch = true;
+
+      if (budget !== 'all') {
+        const [min, max] = budget.split('-').map(Number);
+        budgetMatch = price >= min && price <= max;
+      }
+
+      const searchMatch = city.includes(search);
+      item.style.display = (searchMatch && budgetMatch) ? 'block' : 'none';
+    });
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
