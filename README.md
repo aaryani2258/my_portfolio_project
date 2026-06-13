@@ -8,7 +8,7 @@ This portfolio is designed to present my journey as a student, intern, and aspir
 
 ## Live Demo
 
-- [View Portfolio](https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME/)
+- [View Portfolio](https://aaryani2258.github.io/my_portfolio_project/)
 
 ## Features
 
