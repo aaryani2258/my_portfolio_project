@@ -46,15 +46,16 @@ portfolio/
 ├── script.js
 ├── README.md
 ├── .gitignore
-├── spam_classifier_demo.html
-├── digit_recognizer_demo.html
+├── spam-email-classifier.html
+├── handwritten-digit-recognizer.html
+├── real_estate.html
 └── images/
-    ├── heroImage.jpeg
+    ├── heroImage.png
     ├── about.jpeg
-    ├── portfolioImage1.jpg
-    ├── portfolioImage2.jpg
-    ├── portfolioImage3.jpg
-    └── portfolioImage4.jpg
+    ├── portfolio_image1.png
+    ├── portfolio_image2.png
+    ├── portfolio_image3.png
+    └── portfolio_image4.png
 ```
 
 ## Local Setup

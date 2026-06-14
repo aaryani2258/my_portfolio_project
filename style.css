@@ -47,6 +47,12 @@ body {
     background-size: cover;
     position: relative;
     animation: fadeIn 1s ease-in;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("images/heroImage.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
 }
 
 @keyframes fadeIn {
@@ -143,6 +149,20 @@ h1 {
 .skill-badge:hover {
     transform: scale(1.1);
     background: #764ba2;
+}
+
+/* ===== Education Section ===== */
+
+#education {
+    background: #f8fafc;
+}
+
+#education .table {
+    margin-bottom: 0;
+}
+
+#education .table th {
+    vertical-align: middle;
 }
 
 /* ===== Services Section ===== */

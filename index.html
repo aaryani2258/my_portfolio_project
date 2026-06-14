@@ -27,6 +27,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -80,6 +81,64 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!--Education Section -->
+    <section id="education" class="py-5">
+        <div class="container">
+            <h1 class="text-center mb-4">Education</h1>
+            <p class="text-center mb-5">
+                Pursuing Bachelor of Technology in CSE-AIML at Malla Reddy Deemed University, Hyderabad, Telangana, 2025–2029.
+            </p>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="card shadow-sm border-0">
+              <div class="card-body p-4">
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle text-center">
+                        <thead class="table-dark">
+                          <tr>
+                            <th>S.No</th>
+                            <th>Qualification</th>
+                            <th>Board / University</th>
+                            <th>CGPA / Percentage</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>10th</td>
+                            <td>SSC / Narayana School</td>
+                            <td>10 CGPA</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Intermediate (MPC)</td>
+                            <td>Resonance Junior College</td>
+                            <td>97%</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>B.Tech (CSE-AIML)</td>
+                            <td>Malla Reddy (MR) Deemed To Be University</td>
+                            <td>Pursuing</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <span class="badge bg-primary me-2">Hyderabad</span>
+                    <span class="badge bg-success me-2">CSE-AIML</span>
+                    <span class="badge bg-info text-dark">2025–2029</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
     </section>
 
     <!-- Skills Section -->
@@ -240,11 +299,20 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <form id="contactForm">
+                    <form action="https://formspree.io/f/mkoakokr" method="POST" id="contactForm">
                         <input type="text" class="form-control form-control-lg" placeholder="Your Name" required>
                         <input type="email" class="form-control mt-3" placeholder="Your Email" required>
-                        <input type="text" class="form-control mt-3" placeholder="Project Type" required>
-                        <select class="form-control mt-3">
+                        <select class="form-select mt-3" name="projectType" required>
+                            <option value="" selected disabled>Select Project Type</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="AI Application">AI Application</option>
+                            <option value="Portfolio Website">Portfolio Website</option>
+                            <option value="Mobile App">Mobile App</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <select class="form-control mt-3" name="interest" required>
                             <option value="">Interested in...</option>
                             <option value="ai">AI/Machine Learning Project</option>
                             <option value="web">Web Development</option>
